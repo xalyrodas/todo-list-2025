@@ -1,12 +1,12 @@
 export function header(){
     let header = document.createElement('header');
 
-    // Título principal
+    
     let h1 = document.createElement('h1');
     h1.innerText = "TODO-LIST";
     header.appendChild(h1);
 
-    // Contenedor de texto y número
+   
     let divTarea = document.createElement('div');
     divTarea.className = "div-Tareas";
 
@@ -22,7 +22,7 @@ export function header(){
 
     header.appendChild(divTarea);
 
-    // Logo del usuario
+  
     let divLogoUsuario = document.createElement('div');
     divLogoUsuario.className = "div-logo";
 
