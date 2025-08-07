@@ -1,3 +1,5 @@
+import { mostrarFormulario } from "../formulario/formularioComponents.js";
+
 export function informaciones(data) {
     // Contenedor principal
     let contenedor = document.createElement('div');
@@ -10,6 +12,12 @@ export function informaciones(data) {
     let btnTarea = document.createElement('button');
     btnTarea.textContent = "+ tarea";
     btnTarea.className = "btn-tarea";
+
+    btnTarea.addEventListener('click',()=>{
+        mostrarFormulario();
+    });
+
+   
 
     let btnArchivados = document.createElement('button');
     btnArchivados.textContent = "Archivados";
