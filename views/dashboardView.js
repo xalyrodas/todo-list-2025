@@ -3,62 +3,39 @@ import { footer } from "../components/footer/footerComponent.js";
 import { tareas } from "../components/tareas/tareasComponent.js";
 import { informaciones } from "../components/informacion/informacionComponent.js";
 
+export async function dashboard() {
 
-export function dashboard() {
+    try {
+        const resultado = await fetch("https://backend-todo-list-1-ndxo.onrender.com/tareas");
+        const datos = await resultado.json();
+        let tareasDb = datos;
+        console.log(tareasDb);
 
-    let seccion = document.createElement('section');
+        let seccion = document.createElement('section');
     seccion.className = "dashboard";
 
 
     //header
-    seccion.appendChild(header())   
+    seccion.appendChild(header())  
 
 
-    // Base de datos de tareas
-let tareasDb = [
-    { 
-        indice: 1,
-        titulo: "Hola mundo1", 
-        estado: "completado", 
-        fechaAs: "17/05/2025", 
-        fechaEn: "30/07/2025",
-        integrantes: ["😇", "😊", "😎"]
-    },
-    { 
-        indice: 2,
-        titulo: "Hola mundo2", 
-        estado: "pendiente", 
-        fechaAs: "18/05/2025", 
-        fechaEn: "31/07/2025",
-        integrantes: ["😇", "😎"]
-    },
-    { 
-        indice: 3,
-        titulo: "Hola mundo3", 
-        estado: "en progreso", 
-        fechaAs: "19/05/2025", 
-        fechaEn: "01/08/2025",
-        integrantes: ["😊"]
-    }
-];
-
-
-     // Contenedor para las dos secciones
+     //Contenedor para las dos secciones
      let contenedor = document.createElement('section');
      contenedor.className = "contenedor-secciones";
-      // Añadimos las dos secciones dentro del contenedor
+    //Añadimos las dos secciones dentro del contenedor
     contenedor.appendChild(tareas(tareasDb));
     contenedor.appendChild(informaciones(tareasDb[0]));
-
-
-
-
-
     seccion.appendChild(contenedor);
 
- 
     seccion.appendChild(footer())
 
-    return seccion
+    return seccion;
+    } catch (error) {
+        console.error("error:",error);
+        
+    }   
 }
-document.body.appendChild(dashboard());
+
+dashboard().then(elemento =>{
+    document.body.appendChild(elemento);
+});

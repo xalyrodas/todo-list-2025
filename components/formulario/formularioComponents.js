@@ -24,7 +24,7 @@ export function mostrarFormulario() {
     form.append(titulo, descripcion, fechaAs, fechaEn, btnGuardar);
     document.body.appendChild(form);
 
-    alert("hola soy rokema");
+   
 
     // 🔻 Agregado: evento para capturar datos al enviar
     form.addEventListener("submit", (e) => {

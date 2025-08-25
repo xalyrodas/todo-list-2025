@@ -1,82 +1,73 @@
 import { mostrarFormulario } from "../formulario/formularioComponents.js";
-
-export function informaciones(data) {
-    // Contenedor principal
-    let contenedor = document.createElement('div');
-    contenedor.className = "contenedor-tarea";
-
-    // Contenedor de botones superiores
-    let botones = document.createElement('div');
-    botones.className = "botones-superiores";
-
-    let btnTarea = document.createElement('button');
-    btnTarea.textContent = "+ tarea";
+export function informaciones (tarea) {
+    const div = document.createElement("div");
+    div.className = "contenedor-informacion";
+  
+    // Botones
+    const divBotones = document.createElement("div");
+    divBotones.className = "div-botones";
+  
+    const btnTarea = document.createElement("button");
     btnTarea.className = "btn-tarea";
+    btnTarea.innerText = "+ Tarea";
 
     btnTarea.addEventListener('click',()=>{
         mostrarFormulario();
     });
-
-   
-
-    let btnArchivados = document.createElement('button');
-    btnArchivados.textContent = "Archivados";
+  
+    const btnArchivados = document.createElement("button");
     btnArchivados.className = "btn-archivados";
-
-    botones.appendChild(btnTarea);
-    botones.appendChild(btnArchivados);
-
-    // Tarjeta de información
-    let tarjeta = document.createElement('div');
-    tarjeta.className = "div-informacion";
-
+    btnArchivados.innerText = "Archivados";
+  
+    divBotones.append(btnTarea, btnArchivados);
+  
+    // Información de la tarea
+    const divInformacion = document.createElement("div");
+    divInformacion.className = "div-informacion";
+  
     // Estado
-    let estado = document.createElement('div');
-    estado.className = "estado";
-    estado.textContent = data.estado;
-
+    const divEstado = document.createElement("div");
+    divEstado.className = `estado-tarea ${tarea.estado_tarea
+      .toLowerCase()
+      .replace(" ", "-")}`;
+    divEstado.innerText = tarea.estado_tarea;
+  
     // Título
-    let titulo = document.createElement('h3');
-    titulo.textContent = data.titulo;
-
+    const titulo = document.createElement("h3");
+    titulo.className = "titulo-asignacion";
+    titulo.innerText = tarea.nombre;
+  
     // Descripción
-    let descripcion = document.createElement('p');
-    descripcion.textContent = data.descripcion;
+    const descripcion = document.createElement("p");
+    descripcion.className = "descripcion-asignacion";
+    descripcion.innerText = tarea.descripcion;
+  
+    // Texto integrantes
+    const spanIntegrantes = document.createElement("span");
+    spanIntegrantes.className = "texto-integrantes";
+    spanIntegrantes.innerText = "Integrantes";
+  
+    // Contenedor integrantes
+    const divIntegrantes = document.createElement("div");
+    divIntegrantes.className = "div-integrantes";
+  
+  /*   tarea.integrantes.forEach((icono) => {
+      const divIcono = document.createElement("div");
+      divIcono.className = "integrante";
+      divIcono.innerText = icono;
+      divIntegrantes.appendChild(divIcono);
+    }); */
+  
+    divInformacion.append(
+      divEstado,
+      titulo,
+      descripcion,
+      spanIntegrantes
+    );
+  
+    div.append(divBotones, divInformacion);
+  
+    return div;
+  }
+    
 
-    // Fechas
-    let fechas = document.createElement('p');
-    fechas.textContent = `Asignada: ${data.fechasAs} | Entrega: ${data.fechaEn}`;
-
-    // Integrantes
-    let integrantes = document.createElement('div');
-    integrantes.className = "integrantes";
-
-    let label = document.createElement('p');
-    label.textContent = "Integrantes";
-
-    let avatares = document.createElement('div');
-    avatares.className = "avatares";
-
-    data.integrantes.forEach((emoji) => {
-        let span = document.createElement('span');
-        span.className = "avatar-emoji";
-        span.textContent = emoji;
-        avatares.appendChild(span);
-    });
-
-    integrantes.appendChild(label);
-    integrantes.appendChild(avatares);
-
-    // Ensamblar la tarjeta
-    tarjeta.appendChild(estado);
-    tarjeta.appendChild(titulo);
-    tarjeta.appendChild(descripcion);
-    tarjeta.appendChild(fechas);
-    tarjeta.appendChild(integrantes);
-
-    // Ensamblar todo
-    contenedor.appendChild(botones);
-    contenedor.appendChild(tarjeta);
-
-    return contenedor;
-}

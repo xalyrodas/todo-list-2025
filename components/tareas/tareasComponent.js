@@ -8,15 +8,17 @@ export function tareas(tareasDb) {
     tareasDb.forEach((e) => {
         div.appendChild(
             tarea(
-                e.indice,
-                e.titulo,
-                e.estado,
-                e.fechaAs,
-                e.fechaEn,
-                e.integrantes
+               1,
+               e.nombre,
+               e.estado_tarea,
+               e.fecha_asignada,
+               e.fecha_entrega,
+               []
             )
         );
     });
+
+    console.log(tareasDb);
 
     return div;
 }

@@ -38,11 +38,11 @@
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
-    color: #fff;
+    color: white;
 }
 
 /* Colores de estado */
-.tarea-estado.completado {
+.tarea-estado.completada {
     background: #77e39f;
 }
 .tarea-estado.pendiente {

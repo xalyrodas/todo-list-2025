@@ -1,87 +1,134 @@
-.contenedor-tarea {
+.contenedor-informacion {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    font-family: 'Courier New', Courier, monospace;
+    gap: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+
+    padding: 1rem 1rem 1rem 2rem;
 }
 
-.botones-superiores {
+.div-botones {
     display: flex;
     gap: 1rem;
 }
 
-.btn-tarea {
-    background-color: #58aefb;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
+.btn-tarea,
+.btn-archivados {
+    padding: 0.6rem 1.2rem;
     border-radius: 10px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    border: none;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tarea {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-tarea:hover {
+    background: #2563eb;
 }
 
 .btn-archivados {
-    background-color: #e0e0e0;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
+    background: #e5e7eb;
+    color: #555;
+}
+
+.btn-archivados:hover {
+    background: #d1d5db;
 }
 
 .div-informacion {
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    row-gap:1rem;
     position: relative;
-    font-family: 'Courier New', Courier, monospace;
+    min-height: 180px;
 }
 
-.estado {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: #a2e8a2;
-    color: #1b4b1b;
-    padding: 0.3rem 0.8rem;
-    border-radius: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: lowercase;
-}
+.estado-tarea {
+    grid-column: 2;
+    grid-row: 1;
 
-.div-informacion h3 {
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-}
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    user-select: none;
 
-.div-informacion p {
-    margin: 0.5rem 0;
-}
-
-.integrantes {
-    margin-top: 1rem;
-}
-
-.avatares {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;
+}
+
+.estado-tarea.pendiente {
+    background: #facc15;
+    color: #92400e;
+}
+
+.estado-tarea.en-progreso {
+    background: #3b82f6;
+    color: #e0e7ff;
+}
+
+.estado-tarea.completada {
+    background: #10b981;
+    color: #d1fae5;
+}
+
+.titulo-asignacion {
+    grid-column: 1 / 3;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.descripcion-asignacion {
+    grid-column: 1 / 3;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+.texto-integrantes {
+    grid-column: 1 / 3;
+    margin-top: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.div-integrantes {
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 0.7rem;
     margin-top: 0.5rem;
 }
 
-.avatar-emoji {
-    font-size: 1.5rem;
-    border: 2px solid #333;
+.integrante {
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 50%;
-    padding: 0.4rem;
-    display: inline-flex;
-    align-items: center;
+    border: 2px solid #94a3b8;
+    background: #f3f4f6;
+    display: flex;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #1e293b;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
